@@ -1,0 +1,14 @@
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\Core.dll
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\Entities.dll
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\Entities.pdb
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\bin\Debug\netcoreapp3.1\Core.pdb
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csprojAssemblyReference.cache
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CopyComplete
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+D:\Projects\Github\YazLab-Mobile-Queries\Mobile-Queries-Backend\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb

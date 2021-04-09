@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eoiXdxPM3JNHTc1YzOzz0db95ZEwxeFiyb4a0yZplGL3H6rZjGDaU0aUf2pDN3hxd8QSSCYvoh03jBolvxgTgw==",
+  "dgSpecHash": "k/SCEzblF9QYp1h2172MupxKg3jddVex60CIsI8KfYd6JowasiCfBtxLUwOikLWYgLtBgbBxn5m8sjsno2be7A==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Github\\Mobile-Queries\\Mobile-Queries-Backend\\Core\\Core.csproj",
+  "projectFilePath": "D:\\Projects\\Github\\YazLab-Mobile-Queries\\Mobile-Queries-Backend\\Core\\Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

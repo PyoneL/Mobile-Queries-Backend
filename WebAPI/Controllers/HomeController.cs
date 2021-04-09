@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class HomeController : ControllerBase
     {
+
         [HttpGet]
-        public IActionResult HomePage()
+        public IActionResult Get()
         {
-            return Ok("Home Page");
+            return Ok("home");
         }
     }
 }
