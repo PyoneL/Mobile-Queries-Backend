@@ -23,8 +23,8 @@ namespace WebAPI.Controllers
         {
             return Ok(_queryExampleOneService.QueryTwo(input));
         }
-        [HttpGet("queryTree")]
-        public IActionResult QueryTree()
+        [HttpGet("queryThree")]
+        public IActionResult QueryThree()
         {
             return Ok(_queryExampleOneService.QueryThree());
         }

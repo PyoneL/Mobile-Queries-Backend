@@ -19,7 +19,9 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors();
             services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
@@ -35,7 +37,7 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
-
+            app.UseCors(builder => builder.WithOrigins("https://localhost:19006").AllowAnyHeader().AllowAnyOrigin());
             app.UseHttpsRedirection();
 
             app.UseRouting();
