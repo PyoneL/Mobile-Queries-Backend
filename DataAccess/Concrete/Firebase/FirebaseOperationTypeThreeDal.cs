@@ -69,7 +69,6 @@ namespace DataAccess.Concrete.Firebase
                     taxi.DOLocationID,
                     taxi.trip_distance,
                 }).OrderByDescending(p=>p.trip_distance).ToList();
-                
             result.Add(new TypeThree_ArticleThree
             {
                 longest_trip = new row { 
