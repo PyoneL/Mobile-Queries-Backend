@@ -12,7 +12,8 @@ namespace DataAccess.Concrete.Firebase
         public FirebaseLocationDal()
         {
             _locations = new List<Location>();
-            _queryLink = "https://mobilequery-2ba56-default-rtdb.firebaseio.com/tlc-data/locations.json";
+            _queryLink = "https://mobilequery-2ba56-default-rtdb.firebaseio.com/tlc_data/locations.json";
+            
 
         }
 
