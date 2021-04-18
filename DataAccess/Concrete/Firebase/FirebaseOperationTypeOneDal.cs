@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.Firebase
     {
         public List<TypeOne_ArticleOne> TypeOne_ArticleOne()
         {
-            List<TypeOne_ArticleOne> result = new List<TypeOne_ArticleOne>();
+            var result = new List<TypeOne_ArticleOne>();
             var response = (from taxi in GetAll()
                             group taxi by taxi.tpep_pickup_datetime.Date into g
                             select new
