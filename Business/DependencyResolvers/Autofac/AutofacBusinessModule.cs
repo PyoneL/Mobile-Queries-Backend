@@ -19,11 +19,13 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<QueryExampleOneManager>().As<IQueryExampleOneService>();
             builder.RegisterType<QueryExampleTwoManager>().As<IQueryExampleTwoService>();
             builder.RegisterType<QueryExampleThreeManager>().As<IQueryExampleThreeService>();
+            builder.RegisterType<QueryExampleLocationManager>().As<IQueryExampleLocationService>();
 
             builder.RegisterType<FirebaseLocationDal>().As<ILocationDal>();
             builder.RegisterType<FirebaseOperationDal>().As<IOperationDal>();
             
             
+            builder.RegisterType<FirebaseOperationLocationDal>().As<IOperationLocationDal>();
             builder.RegisterType<FirebaseOperationTypeOneDal>().As<IOperationTypeOneDal>();
             builder.RegisterType<FirebaseOperationTypeTwoDal>().As<IOperationTypeTwoDal>();
             builder.RegisterType<FirebaseOperationTypeThreeDal>().As<IOperationTypeThreeDal>();

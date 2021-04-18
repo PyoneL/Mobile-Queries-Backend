@@ -13,13 +13,11 @@ namespace DataAccess.Concrete.Firebase
         {
             _locations = new List<Location>();
             _queryLink = "https://mobilequery-2ba56-default-rtdb.firebaseio.com/tlc_data/locations.json";
-            
+            _locations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Location>>(GetRequestHelper.GetRequest(_queryLink));
 
         }
-
-        public List<Location> GetAll()
+        internal List<Location> GetAll()
         {
-            _locations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Location>>(GetRequestHelper.GetRequest(_queryLink));
             return _locations;
         }
 
