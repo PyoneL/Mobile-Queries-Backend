@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
         {
             return Ok(_queryExampleThreeService.QueryTwo(input));
         }
-        [HttpGet("queryThree")]
+        [HttpPost("queryThree")]
         public IActionResult QueryThree()
         {
             return Ok(_queryExampleThreeService.QueryThree());

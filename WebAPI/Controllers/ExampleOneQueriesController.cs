@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
         {
             _queryExampleOneService = queryExampleOneService;
         }
-        [HttpGet("queryOne")]
+        [HttpPost("queryOne")]
         public IActionResult QueryOne()
         {
             return Ok(_queryExampleOneService.QueryOne());
@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
         {
             return Ok(_queryExampleOneService.QueryTwo(input));
         }
-        [HttpGet("queryThree")]
+        [HttpPost("queryThree")]
         public IActionResult QueryThree()
         {
             return Ok(_queryExampleOneService.QueryThree());
