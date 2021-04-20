@@ -63,7 +63,7 @@ namespace DataAccess.Concrete.Firebase
                             }
                             ).OrderBy(p => p.total_amount_average).ToList();
 
-            var response2 = response.Take(2).ToList();
+            var response2 = response.Take(2).OrderBy(p => p.PUDatetime).ToList();
 
             var response3 = (from a in response
                              where a.PUDatetime.Date >= response2[0].PUDatetime.Date &&
