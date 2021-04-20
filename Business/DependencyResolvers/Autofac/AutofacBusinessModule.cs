@@ -6,6 +6,7 @@ using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Firebase;
+using DataAccess.Concrete.GoogleMap;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -21,8 +22,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<QueryExampleThreeManager>().As<IQueryExampleThreeService>();
             builder.RegisterType<QueryExampleLocationManager>().As<IQueryExampleLocationService>();
 
-            builder.RegisterType<FirebaseLocationDal>().As<ILocationDal>();
+            
             builder.RegisterType<FirebaseOperationDal>().As<IOperationDal>();
+            builder.RegisterType<FirebaseLocationDal>().As<ILocationDal>();
+            builder.RegisterType<GoogleCoordinateDal>().As<ICoordinateDal>();
             
             
             builder.RegisterType<FirebaseOperationLocationDal>().As<IOperationLocationDal>();

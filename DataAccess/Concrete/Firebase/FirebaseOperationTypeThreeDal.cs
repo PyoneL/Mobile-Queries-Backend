@@ -7,6 +7,20 @@ namespace DataAccess.Concrete.Firebase
 {
     public class FirebaseOperationTypeThreeDal : FirebaseOperationDal , IOperationTypeThreeDal
     {
+        private readonly IOperationLocationDal _operationLocation;
+        private ICoordinateDal _coordinateDal;
+
+
+        public FirebaseOperationTypeThreeDal()
+        {
+        }
+        
+        public FirebaseOperationTypeThreeDal(IOperationLocationDal operationLocation, ICoordinateDal coordinateDal)
+        {
+            _operationLocation = operationLocation;
+            _coordinateDal = coordinateDal;
+        }
+
         public List<TypeThree_ArticleOne> TypeThree_ArticleOne(TypeThree_ArticleOne_Input input)
         {
             List<TypeThree_ArticleOne> result = new List<TypeThree_ArticleOne>();
@@ -24,12 +38,18 @@ namespace DataAccess.Concrete.Firebase
 
             response.ForEach(p =>
             {
+                var puLocation = _operationLocation.GetByLocationId(p.PULocationID);
+                var doLocation = _operationLocation.GetByLocationId(p.DOLocationID);
+                var puLocationCoordinate = _coordinateDal.GetCordinate(puLocation);
+                var doLocationCoordinate = _coordinateDal.GetCordinate(doLocation);
                 result.Add(new TypeThree_ArticleOne
                 {
                     PUDatetime = p.PUDatetime,
                     DODatetime = p.DODatetime,
-                    PULocationID = p.PULocationID,
-                    DOLocationID = p.DOLocationID,
+                    PULocation = string.Join(" - ",puLocation.Borough,puLocation.Zone),
+                    DOLocationCoordinate = doLocationCoordinate,
+                    PULocationCoordinate = puLocationCoordinate,
+                    DOLocation = string.Join(" - ",doLocation.Borough,doLocation.Zone),
                     trip_distance = p.trip_distance,
                 });
             });
@@ -49,10 +69,17 @@ namespace DataAccess.Concrete.Firebase
 
             response.ForEach(p =>
             {
+                var puLocation = _operationLocation.GetByLocationId(p.PULocationID);
+                var doLocation = _operationLocation.GetByLocationId(p.DOLocationID);
+                var puLocationCoordinate = _coordinateDal.GetCordinate(puLocation);
+                var doLocationCoordinate = _coordinateDal.GetCordinate(doLocation);
+
                 result.Add(new TypeThree_ArticleTwo
                 {
-                    PULocationID = p.PULocationID,
-                    DOLocationID = p.DOLocationID,
+                    PULocation = string.Join(" - ", puLocation.Borough, puLocation.Zone),
+                    PULocationCoordinate = puLocationCoordinate,
+                    DOLocation = string.Join(" - ", puLocation.Borough, puLocation.Zone),
+                    DOLocationCoordinate = doLocationCoordinate,
                 });
             });
             return result;
@@ -71,15 +98,21 @@ namespace DataAccess.Concrete.Firebase
                 }).OrderByDescending(p=>p.trip_distance).ToList();
             result.Add(new TypeThree_ArticleThree
             {
+                
+             
                 longest_trip = new row { 
-                    PULocationID = response.First().PULocationID,
-                    DOLocationID = response.First().DOLocationID,
+                    PULocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
+                    DOLocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
+                    PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().PULocationID).Borough, _operationLocation.GetByLocationId(response.First().PULocationID).Zone),
+                    DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().DOLocationID).Borough, _operationLocation.GetByLocationId(response.First().DOLocationID).Zone),
                     trip_distance = response.First().trip_distance,
                 },
                 shortest_trip = new row
                 {
-                    PULocationID = response.Last().PULocationID,
-                    DOLocationID = response.Last().DOLocationID,
+                    PULocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
+                    DOLocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
+                    PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().PULocationID).Borough, _operationLocation.GetByLocationId(response.Last().PULocationID).Zone),
+                    DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().DOLocationID).Borough, _operationLocation.GetByLocationId(response.Last().DOLocationID).Zone),
                     trip_distance = response.Last().trip_distance,
                 },
             });

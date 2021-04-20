@@ -16,5 +16,10 @@ namespace DataAccess.Concrete.Firebase
 
             return response;
         }
+
+        public Location GetByLocationId(int locationId)
+        {
+            return GetAll().SingleOrDefault(p => p.LocationId == locationId);
+        }
     }
 }
