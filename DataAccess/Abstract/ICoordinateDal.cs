@@ -1,9 +1,10 @@
 ﻿using Entities.Concrete;
+using Entities.Dto.TypeThree;
 
 namespace DataAccess.Abstract
 {
     public interface ICoordinateDal
     {
-        Coordinate GetCordinate(Location location);
+        CoordinateDto GetCoordinate(Location location);
     }
 }

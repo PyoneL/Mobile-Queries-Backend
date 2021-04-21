@@ -40,8 +40,8 @@ namespace DataAccess.Concrete.Firebase
             {
                 var puLocation = _operationLocation.GetByLocationId(p.PULocationID);
                 var doLocation = _operationLocation.GetByLocationId(p.DOLocationID);
-                var puLocationCoordinate = _coordinateDal.GetCordinate(puLocation);
-                var doLocationCoordinate = _coordinateDal.GetCordinate(doLocation);
+                var puLocationCoordinate = _coordinateDal.GetCoordinate(puLocation);
+                var doLocationCoordinate = _coordinateDal.GetCoordinate(doLocation);
                 result.Add(new TypeThree_ArticleOne
                 {
                     PUDatetime = p.PUDatetime,
@@ -71,8 +71,8 @@ namespace DataAccess.Concrete.Firebase
             {
                 var puLocation = _operationLocation.GetByLocationId(p.PULocationID);
                 var doLocation = _operationLocation.GetByLocationId(p.DOLocationID);
-                var puLocationCoordinate = _coordinateDal.GetCordinate(puLocation);
-                var doLocationCoordinate = _coordinateDal.GetCordinate(doLocation);
+                var puLocationCoordinate = _coordinateDal.GetCoordinate(puLocation);
+                var doLocationCoordinate = _coordinateDal.GetCoordinate(doLocation);
 
                 result.Add(new TypeThree_ArticleTwo
                 {
@@ -101,16 +101,16 @@ namespace DataAccess.Concrete.Firebase
                 
              
                 longest_trip = new row { 
-                    PULocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
-                    DOLocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
+                    PULocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
+                    DOLocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
                     PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().PULocationID).Borough, _operationLocation.GetByLocationId(response.First().PULocationID).Zone),
                     DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().DOLocationID).Borough, _operationLocation.GetByLocationId(response.First().DOLocationID).Zone),
                     trip_distance = response.First().trip_distance,
                 },
                 shortest_trip = new row
                 {
-                    PULocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
-                    DOLocationCoordinate = _coordinateDal.GetCordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
+                    PULocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
+                    DOLocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
                     PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().PULocationID).Borough, _operationLocation.GetByLocationId(response.Last().PULocationID).Zone),
                     DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().DOLocationID).Borough, _operationLocation.GetByLocationId(response.Last().DOLocationID).Zone),
                     trip_distance = response.Last().trip_distance,
