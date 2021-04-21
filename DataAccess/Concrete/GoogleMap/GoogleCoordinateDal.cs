@@ -11,7 +11,7 @@ namespace DataAccess.Concrete.GoogleMap
 
         public GoogleCoordinateDal()
         {
-            key = "AIzaSyAoXf6pbJigp8wW-79DwEMukkMBk17r7V4";
+            key = "AIzaSyDzB1CFvd7Lg-FHQCWGwZnsu5hO6anD2aE";
         }
 
         public Coordinate GetCordinate(Location location)
