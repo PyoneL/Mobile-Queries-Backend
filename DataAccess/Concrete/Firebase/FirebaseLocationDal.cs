@@ -5,18 +5,18 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.Firebase
 {
-    public class FirebaseLocationDal : ILocationDal
+    public static class FirebaseLocationDal 
     {
-        private List<Location> _locations;
-        private string _queryLink;
-        public FirebaseLocationDal()
+        private static  List<Location> _locations;
+
+        public static void CreateLocationData()
         {
             _locations = new List<Location>();
-            _queryLink = "https://mobilequery-2ba56-default-rtdb.firebaseio.com/tlc_data/locations.json";
+            string _queryLink = "https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/locations.json";
             _locations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Location>>(GetRequestHelper.GetRequest(_queryLink));
 
         }
-        internal List<Location> GetAll()
+        public static List<Location> GetAll()
         {
             return _locations;
         }

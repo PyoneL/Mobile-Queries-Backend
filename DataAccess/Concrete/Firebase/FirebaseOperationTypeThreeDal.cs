@@ -5,7 +5,7 @@ using Entities.Dto.TypeTree;
 
 namespace DataAccess.Concrete.Firebase
 {
-    public class FirebaseOperationTypeThreeDal : FirebaseOperationDal , IOperationTypeThreeDal
+    public class FirebaseOperationTypeThreeDal : IOperationTypeThreeDal
     {
         private readonly IOperationLocationDal _operationLocation;
         private ICoordinateDal _coordinateDal;
@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.Firebase
         {
             List<TypeThree_ArticleOne> result = new List<TypeThree_ArticleOne>();
 
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                 where taxi.tpep_pickup_datetime.Date == input.FirstDate.Date
                 select new
                 {
@@ -59,7 +59,7 @@ namespace DataAccess.Concrete.Firebase
         public List<TypeThree_ArticleTwo> TypeThree_ArticleTwo(TypeThree_ArticleTwo_Input input)
         {
             List<TypeThree_ArticleTwo> result = new List<TypeThree_ArticleTwo>();
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                 where taxi.tpep_pickup_datetime.Date == input.FirstDate.Date && 
                       taxi.PULocationID == input.PULocationID
                 select new
@@ -89,7 +89,7 @@ namespace DataAccess.Concrete.Firebase
         {
             List<TypeThree_ArticleThree> result = new List<TypeThree_ArticleThree>();
 
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                 where taxi.passenger_count >= 3                              select new
                 {
                     taxi.PULocationID,

@@ -5,12 +5,12 @@ using DataAccess.Abstract;
 
 namespace DataAccess.Concrete.Firebase
 {
-    public class FirebaseOperationTypeOneDal : FirebaseOperationDal , IOperationTypeOneDal
+    public class FirebaseOperationTypeOneDal : IOperationTypeOneDal
     {
         public List<TypeOne_ArticleOne> TypeOne_ArticleOne()
         {
             var result = new List<TypeOne_ArticleOne>();
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                             group taxi by taxi.tpep_pickup_datetime.Date into g
                             select new
                             {
@@ -32,7 +32,7 @@ namespace DataAccess.Concrete.Firebase
         {
             List<TypeOne_ArticleThree> result = new List<TypeOne_ArticleThree>();
 
-            var response = (from taxi in _operations
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                             select new
                             {
                                 PUDatetime = taxi.tpep_pickup_datetime, taxi.trip_distance,
@@ -53,7 +53,7 @@ namespace DataAccess.Concrete.Firebase
         {
             List<TypeOne_ArticleTwo> result = new List<TypeOne_ArticleTwo>();
 
-            var response = (from taxi in _operations
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                             where taxi.trip_distance < input.distance
                             group taxi by taxi.tpep_pickup_datetime into g
                             select new

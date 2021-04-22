@@ -7,11 +7,11 @@ using Entities.Dto.Location;
 
 namespace DataAccess.Concrete.Firebase
 {
-    public class FirebaseOperationLocationDal : FirebaseLocationDal, IOperationLocationDal
+    public class FirebaseOperationLocationDal : IOperationLocationDal
     {
         public List<Location> GetAllLocation() {
             
-            var response = (from location in GetAll()
+            var response = (from location in FirebaseLocationDal.GetAll()
                             select location).ToList();
 
             return response;
@@ -19,7 +19,7 @@ namespace DataAccess.Concrete.Firebase
 
         public Location GetByLocationId(int locationId)
         {
-            return GetAll().SingleOrDefault(p => p.LocationId == locationId);
+            return FirebaseLocationDal.GetAll().SingleOrDefault(p => p.LocationId == locationId);
         }
     }
 }

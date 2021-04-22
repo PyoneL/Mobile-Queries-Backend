@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DataAccess.Concrete.Firebase
 {
-    public class FirebaseOperationTypeTwoDal : FirebaseOperationDal, IOperationTypeTwoDal
+    public class FirebaseOperationTypeTwoDal : IOperationTypeTwoDal
     {
         public List<TypeTwo_ArticleOne> TypeTwo_ArticleOne(TypeTwo_ArticleOne_Input input)
         {
@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.Firebase
 
             var response = new
             {
-                taxi_count = (from taxi in GetAll()
+                taxi_count = (from taxi in FirebaseOperationDal.GetAll()
                               where taxi.tpep_pickup_datetime >= input.FirstDate &&
                                     taxi.tpep_pickup_datetime <= input.SecondDate &&
                                     taxi.PULocationID == input.PULocationID
@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.Firebase
         {
             var result = new List<TypeTwo_ArticleThree>();
 
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                             where taxi.tpep_pickup_datetime.Date >= input.FirstDate.Date && taxi.tpep_pickup_datetime.Date <= input.SecondDate.Date
                             select new
                             {
@@ -54,7 +54,7 @@ namespace DataAccess.Concrete.Firebase
         {
             var result = new List<TypeTwo_ArticleTwo>();
 
-            var response = (from taxi in GetAll()
+            var response = (from taxi in FirebaseOperationDal.GetAll()
                             group taxi by taxi.tpep_pickup_datetime.Date into g
                             select new
                             {

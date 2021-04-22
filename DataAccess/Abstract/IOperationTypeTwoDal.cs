@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IOperationTypeTwoDal : IOperationDal
+    public interface IOperationTypeTwoDal
     {
         public List<TypeTwo_ArticleOne> TypeTwo_ArticleOne(TypeTwo_ArticleOne_Input input);
         public List<TypeTwo_ArticleTwo> TypeTwo_ArticleTwo();
