@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.Firebase
         public List<Location> GetAllLocation() {
             
             var response = (from location in FirebaseLocationDal.GetAll()
-                            select location).ToList();
+                            select location).OrderBy(P => P.Zone).OrderBy(p => p.Borough).ToList();
 
             return response;
         }
