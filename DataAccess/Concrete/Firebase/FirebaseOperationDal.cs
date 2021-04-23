@@ -10,9 +10,7 @@ namespace DataAccess.Concrete.Firebase
 
         public static void CreateList()
         {
-            _operations = new List<Operation>();
-            string _queryLink = "https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/operations.json";
-            _operations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Operation>>(GetRequestHelper.GetRequest(_queryLink));
+            _operations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Operation>>(GetRequestHelper.GetRequest("https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/operations.json"));
         }
         
         public static List<Operation> GetAll()

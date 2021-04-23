@@ -1,9 +1,7 @@
-﻿using Entities.Dto.TypeOne;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Dto.Location;
 
 namespace DataAccess.Concrete.Firebase
 {
@@ -12,7 +10,7 @@ namespace DataAccess.Concrete.Firebase
         public List<Location> GetAllLocation() {
             
             var response = (from location in FirebaseLocationDal.GetAll()
-                            select location).OrderBy(P => P.Zone).OrderBy(p => p.Borough).ToList();
+                            select location).OrderBy(p => p.Borough).ThenBy(p => p.Zone).ToList();
 
             return response;
         }

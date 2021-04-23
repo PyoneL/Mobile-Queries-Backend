@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using DataAccess.Abstract;
 using DataAccess.Utilities.Helper;
 using Entities.Concrete;
 
@@ -11,12 +10,9 @@ namespace DataAccess.Concrete.Firebase
 
         public static void CreateLocationData()
         {
-            _locations = new List<Location>();
-            string _queryLink = "https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/locations.json";
-            _locations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Location>>(GetRequestHelper.GetRequest(_queryLink));
-
+            _locations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Location>>(GetRequestHelper.GetRequest("https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/locations.json"));
         }
-        public static List<Location> GetAll()
+        public static IEnumerable<Location> GetAll()
         {
             return _locations;
         }

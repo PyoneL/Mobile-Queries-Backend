@@ -8,12 +8,8 @@ namespace DataAccess.Concrete.Firebase
     public class FirebaseOperationTypeThreeDal : IOperationTypeThreeDal
     {
         private readonly IOperationLocationDal _operationLocation;
-        private ICoordinateDal _coordinateDal;
-
-
-        public FirebaseOperationTypeThreeDal()
-        {
-        }
+        private readonly ICoordinateDal _coordinateDal;
+        
         
         public FirebaseOperationTypeThreeDal(IOperationLocationDal operationLocation, ICoordinateDal coordinateDal)
         {
@@ -103,6 +99,7 @@ namespace DataAccess.Concrete.Firebase
                 longest_trip = new row { 
                     PULocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().PULocationID)),
                     DOLocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.First().DOLocationID)),
+                    
                     PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().PULocationID).Borough, _operationLocation.GetByLocationId(response.First().PULocationID).Zone),
                     DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.First().DOLocationID).Borough, _operationLocation.GetByLocationId(response.First().DOLocationID).Zone),
                     trip_distance = response.First().trip_distance,
@@ -111,6 +108,7 @@ namespace DataAccess.Concrete.Firebase
                 {
                     PULocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.Last().PULocationID)),
                     DOLocationCoordinate = _coordinateDal.GetCoordinate(_operationLocation.GetByLocationId(response.Last().DOLocationID)),
+                    
                     PULocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().PULocationID).Borough, _operationLocation.GetByLocationId(response.Last().PULocationID).Zone),
                     DOLocation = string.Join(" - ", _operationLocation.GetByLocationId(response.Last().DOLocationID).Borough, _operationLocation.GetByLocationId(response.Last().DOLocationID).Zone),
                     trip_distance = response.Last().trip_distance,
