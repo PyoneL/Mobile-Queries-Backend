@@ -1,5 +1,4 @@
 ﻿using Core.Entities.Abstract;
-using Entities.Concrete;
 using Entities.Dto.TypeThree;
 
 namespace Entities.Dto.TypeTree
@@ -12,7 +11,5 @@ namespace Entities.Dto.TypeTree
 
         public string PULocation { get; set; }
         public string DOLocation { get; set; }
-
     }
-
 }

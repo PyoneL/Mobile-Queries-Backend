@@ -1,6 +1,6 @@
 ﻿using Business.Abstract;
-using Microsoft.AspNetCore.Mvc;
 using Entities.Dto.TypeTwo;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
@@ -21,11 +21,13 @@ namespace WebAPI.Controllers
         {
             return Ok(_queryExampleTwoService.QueryOne(input));
         }
+
         [HttpPost("queryTwo")]
         public IActionResult QueryTwo()
         {
             return Ok(_queryExampleTwoService.QueryTwo());
         }
+
         [HttpPost("queryThree")]
         public IActionResult QueryThree(TypeTwo_ArticleThree_Input input)
         {

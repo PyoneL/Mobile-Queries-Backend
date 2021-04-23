@@ -2,11 +2,9 @@
 
 namespace Entities.Dto.TypeThree
 {
-    public class CoordinateDto :IDto
+    public class CoordinateDto : IDto
     {
-        public double Latitude  { get; set; }
+        public double Latitude { get; set; }
         public double Longitude { get; set; }
-        
-        
     }
 }

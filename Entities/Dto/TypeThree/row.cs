@@ -1,5 +1,4 @@
-﻿using Entities.Concrete;
-using Entities.Dto.TypeThree;
+﻿using Entities.Dto.TypeThree;
 
 namespace Entities.Dto.TypeTree
 {
@@ -13,5 +12,4 @@ namespace Entities.Dto.TypeTree
         public string DOLocation { get; set; }
         public decimal trip_distance { get; set; }
     }
-
 }

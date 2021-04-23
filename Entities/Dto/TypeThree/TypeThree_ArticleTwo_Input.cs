@@ -7,7 +7,5 @@ namespace Entities.Dto.TypeTree
     {
         public DateTime FirstDate { get; set; }
         public int PULocationID { get; set; }
-
     }
-
 }

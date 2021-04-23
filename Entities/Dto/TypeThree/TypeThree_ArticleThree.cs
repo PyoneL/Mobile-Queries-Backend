@@ -6,7 +6,5 @@ namespace Entities.Dto.TypeTree
     {
         public row longest_trip { get; set; }
         public row shortest_trip { get; set; }
-
     }
-
 }

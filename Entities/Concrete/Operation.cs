@@ -1,7 +1,5 @@
-﻿using Core.Entities.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Core.Entities.Abstract;
 
 namespace Entities.Concrete
 {

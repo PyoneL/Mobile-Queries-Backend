@@ -8,7 +8,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ExampleThreeQueriesController : ControllerBase
     {
-        private IQueryExampleThreeService _queryExampleThreeService;
+        private readonly IQueryExampleThreeService _queryExampleThreeService;
 
 
         public ExampleThreeQueriesController(IQueryExampleThreeService queryExampleThreeService)
@@ -21,11 +21,13 @@ namespace WebAPI.Controllers
         {
             return Ok(_queryExampleThreeService.QueryOne(input));
         }
+
         [HttpPost("queryTwo")]
         public IActionResult QueryTwo(TypeThree_ArticleTwo_Input input)
         {
             return Ok(_queryExampleThreeService.QueryTwo(input));
         }
+
         [HttpPost("queryThree")]
         public IActionResult QueryThree()
         {

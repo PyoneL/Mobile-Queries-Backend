@@ -1,7 +1,5 @@
-﻿using Entities.Dto.TypeTwo;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Entities.Dto.TypeTwo;
 
 namespace DataAccess.Abstract
 {
