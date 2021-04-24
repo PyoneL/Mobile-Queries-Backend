@@ -11,6 +11,7 @@ namespace DataAccess.Concrete.Firebase
 
         public static void CreateList()
         {
+            _operations = new List<Operation>();
             _operations = JsonConvert.DeserializeObject<List<Operation>>(
                 GetRequestHelper.GetRequest(
                     "https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/operations.json"));

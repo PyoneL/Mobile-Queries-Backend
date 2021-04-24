@@ -11,6 +11,7 @@ namespace DataAccess.Concrete.Firebase
 
         public static void CreateLocationData()
         {
+            _locations = new List<Location>();
             _locations = JsonConvert.DeserializeObject<List<Location>>(
                 GetRequestHelper.GetRequest(
                     "https://mobilqueryfirebase-default-rtdb.firebaseio.com/tlc_data/locations.json"));
