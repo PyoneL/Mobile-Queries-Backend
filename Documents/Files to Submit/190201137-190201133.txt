@@ -1,0 +1,618 @@
+/* ---------------------------------------------- */ 
+namespace Core.Entities.Abstract
+{
+    public interface IDto
+    {
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Entities.Abstract
+{
+    public interface IEntity
+    {
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class DataResult<T> : Result, IDataResult<T>
+    {
+        protected DataResult(T data, bool success, string message) : base(success, message)
+        {
+            Data = data;
+        }
+
+        protected DataResult(T data, bool success) : base(success)
+        {
+            Data = data;
+        }
+
+        public T Data { get; }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class ErrorDataResult<T> : DataResult<T>
+    {
+        public ErrorDataResult(T data, string message) : base(data, false, message)
+        {
+        }
+
+        public ErrorDataResult(T data) : base(data, false)
+        {
+        }
+
+        public ErrorDataResult(string message) : base(default, false, message)
+        {
+        }
+
+        public ErrorDataResult() : base(default, false)
+        {
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class ErrorResult : Result
+    {
+        public ErrorResult(string message) : base(false, message)
+        {
+        }
+
+        public ErrorResult() : base(false)
+        {
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public interface IDataResult<out T> : IResult
+    {
+        T Data { get; }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public interface IResult
+    {
+        bool Success { get; }
+        string Message { get; }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class Result : IResult
+    {
+        protected Result(bool success, string message) : this(success)
+        {
+            Message = message;
+        }
+
+        protected Result(bool success)
+        {
+            Success = success;
+        }
+
+        public bool Success { get; }
+        public string Message { get; }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class SuccessDataResult<T> : DataResult<T>
+    {
+        public SuccessDataResult(T data, string message) : base(data, true, message)
+        {
+        }
+
+        public SuccessDataResult(T data) : base(data, true)
+        {
+        }
+
+        public SuccessDataResult(string message) : base(default, true, message)
+        {
+        }
+
+        public SuccessDataResult() : base(default, true)
+        {
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+namespace Core.Utilities.Results
+{
+    public class SuccessResult : Result
+    {
+        public SuccessResult(string message) : base(true, message)
+        {
+        }
+
+        public SuccessResult() : base(true)
+        {
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Concrete
+{
+    public class Coordinate : IEntity
+    {
+        public double lat { get; set; }
+        public double lng { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Concrete
+{
+    public class Location : IEntity
+    {
+        public string Borough { get; set; }
+        public int LocationId { get; set; }
+        public string Zone { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Concrete
+{
+    public class Operation : IEntity
+    {
+        public int DOLocationID { get; set; }
+        public int PULocationID { get; set; }
+        public int passenger_count { get; set; }
+        public decimal total_amount { get; set; }
+        public decimal trip_distance { get; set; }
+        public DateTime tpep_pickup_datetime { get; set; }
+        public DateTime tpep_dropoff_datetime { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.Location
+{
+    public class LocationDto : IDto
+    {
+        public int LocationID { get; set; }
+        public string Location { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeOne
+{
+    public class TypeOne_ArticleOne : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public int passenger_count { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeOne
+{
+    public class TypeOne_ArticleThree : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public decimal trip_distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeOne
+{
+    public class TypeOne_ArticleTwo : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public decimal trip_distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeOne
+{
+    public class TypeOne_ArticleTwo_Input : IDto
+    {
+        public decimal distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeThree
+{
+    public class CoordinateDto : IDto
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Entities.Dto.TypeThree;
+
+namespace Entities.Dto.TypeTree
+{
+    public class row
+    {
+        public CoordinateDto PULocationCoordinate { get; set; }
+
+        public CoordinateDto DOLocationCoordinate { get; set; }
+
+        public string PULocation { get; set; }
+        public string DOLocation { get; set; }
+        public decimal trip_distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+using Entities.Dto.TypeThree;
+
+namespace Entities.Dto.TypeTree
+{
+    public class TypeThree_ArticleOne : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public DateTime DODatetime { get; set; }
+
+        public CoordinateDto PULocationCoordinate { get; set; }
+
+        public CoordinateDto DOLocationCoordinate { get; set; }
+
+        public string PULocation { get; set; }
+        public string DOLocation { get; set; }
+
+        public decimal trip_distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTree
+{
+    public class TypeThree_ArticleOne_Input : IDto
+    {
+        public DateTime FirstDate { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTree
+{
+    public class TypeThree_ArticleThree : IDto
+    {
+        public row longest_trip { get; set; }
+        public row shortest_trip { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+using Entities.Dto.TypeThree;
+
+namespace Entities.Dto.TypeTree
+{
+    public class TypeThree_ArticleTwo : IDto
+    {
+        public CoordinateDto PULocationCoordinate { get; set; }
+
+        public CoordinateDto DOLocationCoordinate { get; set; }
+
+        public string PULocation { get; set; }
+        public string DOLocation { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTree
+{
+    public class TypeThree_ArticleTwo_Input : IDto
+    {
+        public DateTime FirstDate { get; set; }
+        public int PULocationID { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTwo
+{
+    public class TypeTwo_ArticleOne : IDto
+    {
+        public int taxi_count { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTwo
+{
+    public class TypeTwo_ArticleOne_Input : IDto
+    {
+        public DateTime FirstDate { get; set; }
+        public DateTime SecondDate { get; set; }
+        public int PULocationID { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTwo
+{
+    public class TypeTwo_ArticleThree : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public DateTime DODatetime { get; set; }
+        public decimal trip_distance { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTwo
+{
+    public class TypeTwo_ArticleThree_Input : IDto
+    {
+        public DateTime FirstDate { get; set; }
+        public DateTime SecondDate { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using System;
+using Core.Entities.Abstract;
+
+namespace Entities.Dto.TypeTwo
+{
+    public class TypeTwo_ArticleTwo : IDto
+    {
+        public DateTime PUDatetime { get; set; }
+        public decimal total_amount_average { get; set; }
+    }
+}
+/* ---------------------------------------------- */ 
+using Business.Abstract;
+using Entities.Dto.TypeOne;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CacheController : ControllerBase
+    {
+        private IMemoryCacheService _memoryCacheService;
+
+        public CacheController(IMemoryCacheService memoryCacheService)
+        {
+            _memoryCacheService = memoryCacheService;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return Ok(_memoryCacheService.CacheRestore());
+
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using Business.Abstract;
+using Entities.Dto.TypeOne;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ExampleOneQueriesController : ControllerBase
+    {
+        private readonly IQueryExampleOneService _queryExampleOneService;
+
+        public ExampleOneQueriesController(IQueryExampleOneService queryExampleOneService)
+        {
+            _queryExampleOneService = queryExampleOneService;
+        }
+
+        [HttpPost("queryOne")]
+        public IActionResult QueryOne()
+        {
+            return Ok(_queryExampleOneService.QueryOne());
+        }
+
+        [HttpPost("queryTwo")]
+        public IActionResult QueryTwo(TypeOne_ArticleTwo_Input input)
+        {
+            return Ok(_queryExampleOneService.QueryTwo(input));
+        }
+
+        [HttpPost("queryThree")]
+        public IActionResult QueryThree()
+        {
+            return Ok(_queryExampleOneService.QueryThree());
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using Business.Abstract;
+using Entities.Dto.TypeTree;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ExampleThreeQueriesController : ControllerBase
+    {
+        private readonly IQueryExampleThreeService _queryExampleThreeService;
+
+
+        public ExampleThreeQueriesController(IQueryExampleThreeService queryExampleThreeService)
+        {
+            _queryExampleThreeService = queryExampleThreeService;
+        }
+
+        [HttpPost("queryOne")]
+        public IActionResult QueryOne(TypeThree_ArticleOne_Input input)
+        {
+            return Ok(_queryExampleThreeService.QueryOne(input));
+        }
+
+        [HttpPost("queryTwo")]
+        public IActionResult QueryTwo(TypeThree_ArticleTwo_Input input)
+        {
+            return Ok(_queryExampleThreeService.QueryTwo(input));
+        }
+
+        [HttpPost("queryThree")]
+        public IActionResult QueryThree()
+        {
+            return Ok(_queryExampleThreeService.QueryThree());
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using Business.Abstract;
+using Entities.Dto.TypeTwo;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ExampleTwoQueriesController : ControllerBase
+    {
+        private readonly IQueryExampleTwoService _queryExampleTwoService;
+
+        public ExampleTwoQueriesController(IQueryExampleTwoService queryExampleTwoService)
+        {
+            _queryExampleTwoService = queryExampleTwoService;
+        }
+
+
+        [HttpPost("queryOne")]
+        public IActionResult QueryOne(TypeTwo_ArticleOne_Input input)
+        {
+            return Ok(_queryExampleTwoService.QueryOne(input));
+        }
+
+        [HttpPost("queryTwo")]
+        public IActionResult QueryTwo()
+        {
+            return Ok(_queryExampleTwoService.QueryTwo());
+        }
+
+        [HttpPost("queryThree")]
+        public IActionResult QueryThree(TypeTwo_ArticleThree_Input input)
+        {
+            return Ok(_queryExampleTwoService.QueryThree(input));
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LocationController : ControllerBase
+    {
+        private readonly IQueryExampleLocationService _queryExampleLocationService;
+
+        public LocationController(IQueryExampleLocationService queryExampleLocationService)
+        {
+            _queryExampleLocationService = queryExampleLocationService;
+        }
+
+        [HttpPost("all")]
+        public IActionResult QueryOne()
+        {
+            return Ok(_queryExampleLocationService.GetAllLocation());
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+using DataAccess.Concrete.Firebase;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+
+namespace WebAPI
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        private IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            FirebaseLocationDal.CreateLocationData();
+            FirebaseOperationDal.CreateList();
+            services.AddCors();
+            services.AddControllers();
+
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebAPI", Version = "v1"}); });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
+            }
+
+            app.UseCors(builder => builder.WithOrigins("https://localhost:19006").AllowAnyHeader().AllowAnyOrigin());
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+    }
+}
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
+/* ---------------------------------------------- */ 
