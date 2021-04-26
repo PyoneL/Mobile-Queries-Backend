@@ -74,7 +74,7 @@ namespace DataAccess.Concrete.Firebase
                 {
                     PULocation = string.Join(" - ", puLocation.Borough, puLocation.Zone),
                     PULocationCoordinate = puLocationCoordinate,
-                    DOLocation = string.Join(" - ", puLocation.Borough, puLocation.Zone),
+                    DOLocation = string.Join(" - ", doLocation.Borough, doLocation.Zone),
                     DOLocationCoordinate = doLocationCoordinate
                 });
             });
